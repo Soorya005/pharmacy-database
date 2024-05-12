@@ -1,0 +1,65 @@
+DROP DATABASE IF EXISTS pharmacy;
+CREATE DATABASE pharmacy;
+USE pharmacy;
+
+CREATE TABLE medicine (
+    serial_number INT AUTO_INCREMENT PRIMARY KEY,
+    medicine_type VARCHAR(50),
+    medicine_name VARCHAR(50),
+    price DECIMAL(10, 2)
+);
+
+INSERT INTO medicine (medicine_type, medicine_name, price) VALUES
+('Drops', 'Tobramycin eye drops', 130),
+('Drops', 'Milfox eye drops', 164),
+('Drops', 'Milfodex eye drops', 162),
+('Tablet', 'Montelukast tablet', 107),
+('Tablet', 'Palip XR', 132),
+('Tablet', 'Thyronorm', 157),
+('Suppositories', 'FENSUPP suppositories', 116),
+('Suppositories', 'NEOMOL anal suppositories', 40),
+('Suppositories', 'Zyrotram suppository', 36),
+('Capsules', 'Vitamin E capsule', 33),
+('Capsules', 'Becosules capsule', 51),
+('Capsules', 'Gemcal capsule', 339),
+('Syrups', 'Asthalin', 152),
+('Syrups', 'Salbutamol sulphate syrup', 83),
+('Syrups', 'Protussa cough syrup', 85),
+('Injections', 'Mervup injection', 108),
+('Injections', 'Rejunex injection', 47),
+('Injections', 'Deriphilin injection', 87),
+('Inhalers', 'asthalin inhalers', 147),
+('Inhalers', 'aerocart inhalers', 249),
+('Inhalers', 'Levolin inhalers', 214),
+('Patches', 'Mupatch', 141),
+('Patches', 'Dicloplast', 182),
+('Patches', '2 baconil TTS20', 737),
+('Buccal tablets', 'Corlan', 272),
+('Buccal tablets', 'Fentosa', 138),
+('Buccal tablets', 'Buccastem', 400),
+('Miscellaneous', 'Medicated gloves', 55),
+('Miscellaneous', 'Sanitizers', 15),
+('Miscellaneous', 'Sanitary pads', 40),
+('Miscellaneous', 'Face Masks', 5),
+('Miscellaneous', 'Ankle brace', 2000),
+('Miscellaneous', 'Pulse oximeters', 400),
+('Miscellaneous', 'Digital Thermometer', 300),
+('Miscellaneous', 'Blood pressure monitor', 800),
+('Miscellaneous', 'Glucometer', 800),
+('Miscellaneous', 'Armsling', 250),
+('Miscellaneous', 'Condoms', 100);
+
+
+USE PHARMACY;
+
+CREATE TABLE USERS (
+    USER_ID INT AUTO_INCREMENT PRIMARY KEY,
+    USERNAME VARCHAR(50) UNIQUE NOT NULL,
+    EMAIL VARCHAR(50) UNIQUE NOT NULL,
+    PASSWORD VARCHAR(100) NOT NULL,
+    FULL_NAME VARCHAR(100) NOT NULL,
+    PHONE_NUMBER VARCHAR(20) NOT NULL,
+    ADDRESS VARCHAR(255) NOT NULL,
+    REGISTRATION_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
