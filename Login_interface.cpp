@@ -62,7 +62,7 @@ int main() {
     int choice;
     string username, password;
 
-    while (true) {
+    while (1) {
         cout << "\n1. Sign Up\n2. Login\n3. Exit\nEnter your choice: ";
         cin >> choice;
 
