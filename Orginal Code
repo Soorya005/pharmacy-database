@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <iomanip> // for std::setprecision
-#include <algorithm> // for std::transform
+#include <iomanip> 
+#include <algorithm> 
 
 using namespace std;
 
@@ -13,22 +13,22 @@ struct Medicine {
     double price;
 };
 
-// Utility function to convert string to lowercase
+
 string toLower(string str) {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     return str;
 }
 
-// Main class for Pharmacy Management System
+
 class Pharmacy {
 private:
     vector<Medicine> medicines;  // Vector to hold medicine data
     vector<Medicine> cart;       // Vector to hold medicines added to cart
 
 public:
-    // Constructor to initialize medicine data
+   
     Pharmacy() {
-        // Initialize medicine data
+       
         medicines = {
             {"Drops", "Tobramycin eye drops", 130.0},
             {"Drops", "Milfox eye drops", 164.0},
@@ -70,7 +70,7 @@ public:
         };
     }
 
-    // Function to display login page
+    
     void login() {
         string username, password;
         cout << "===== Pharmacy Management System =====" << endl;
@@ -81,7 +81,7 @@ public:
         cout << "Welcome, " << username << "!" << endl;
     }
 
-    // Function to display all available medicines
+    
     void displayMedicines() {
         cout << "\nAvailable Medicines:" << endl;
         cout << "======================" << endl;
@@ -91,7 +91,7 @@ public:
         cout << "======================" << endl;
     }
 
-    // Function to search for a medicine by name and add it to cart
+   
     void addToCart(const string& med_name) {
         bool found = false;
         for (const auto& med : medicines) {
@@ -107,7 +107,7 @@ public:
         }
     }
 
-    // Function to display the current cart
+    
     void displayCart() {
         if (cart.empty()) {
             cout << "Your cart is empty." << endl;
@@ -124,7 +124,7 @@ public:
         }
     }
 
-    // Function to clear the cart
+   
     void clearCart() {
         cart.clear();
         cout << "Cart cleared." << endl;
@@ -134,7 +134,7 @@ public:
 int main() {
     Pharmacy pharmacy;
 
-    // Login page
+    
     pharmacy.login();
 
     int choice;
