@@ -1,0 +1,179 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip> // for std::setprecision
+#include <algorithm> // for std::transform
+
+using namespace std;
+
+// Define a structure to represent medicine information
+struct Medicine {
+    string medicine_type;
+    string medicine_name;
+    double price;
+};
+
+// Utility function to convert string to lowercase
+string toLower(string str) {
+    transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
+}
+
+// Main class for Pharmacy Management System
+class Pharmacy {
+private:
+    vector<Medicine> medicines;  // Vector to hold medicine data
+    vector<Medicine> cart;       // Vector to hold medicines added to cart
+
+public:
+    // Constructor to initialize medicine data
+    Pharmacy() {
+        // Initialize medicine data
+        medicines = {
+            {"Drops", "Tobramycin eye drops", 130.0},
+            {"Drops", "Milfox eye drops", 164.0},
+            {"Drops", "Milfodex eye drops", 162.0},
+            {"Tablet", "Montelukast tablet", 107.0},
+            {"Tablet", "Palip XR", 132.0},
+            {"Tablet", "Thyronorm", 157.0},
+            {"Suppositories", "FENSUPP suppositories", 116.0},
+            {"Suppositories", "NEOMOL anal suppositories", 40.0},
+            {"Suppositories", "Zyrotram suppository", 36.0},
+            {"Capsules", "Vitamin E capsule", 33.0},
+            {"Capsules", "Becosules capsule", 51.0},
+            {"Capsules", "Gemcal capsule", 339.0},
+            {"Syrups", "Asthalin", 152.0},
+            {"Syrups", "Salbutamol sulphate syrup", 83.0},
+            {"Syrups", "Protussa cough syrup", 85.0},
+            {"Injections", "Mervup injection", 108.0},
+            {"Injections", "Rejunex injection", 47.0},
+            {"Injections", "Deriphilin injection", 87.0},
+            {"Inhalers", "asthalin inhalers", 147.0},
+            {"Inhalers", "aerocart inhalers", 249.0},
+            {"Inhalers", "Levolin inhalers", 214.0},
+            {"Patches", "Mupatch", 141.0},
+            {"Patches", "Dicloplast", 182.0},
+            {"Patches", "2 baconil TTS20", 737.0},
+            {"Buccal tablets", "Corlan", 272.0},
+            {"Buccal tablets", "Fentosa", 138.0},
+            {"Buccal tablets", "Buccastem", 400.0},
+            {"Miscellaneous", "Medicated gloves", 55.0},
+            {"Miscellaneous", "Sanitizers", 15.0},
+            {"Miscellaneous", "Sanitary pads", 40.0},
+            {"Miscellaneous", "Face Masks", 5.0},
+            {"Miscellaneous", "Ankle brace", 2000.0},
+            {"Miscellaneous", "Pulse oximeters", 400.0},
+            {"Miscellaneous", "Digital Thermometer", 300.0},
+            {"Miscellaneous", "Blood pressure monitor", 800.0},
+            {"Miscellaneous", "Glucometer", 800.0},
+            {"Miscellaneous", "Armsling", 250.0}
+        };
+    }
+
+    // Function to display login page
+    void login() {
+        string username, password;
+        cout << "===== Pharmacy Management System =====" << endl;
+        cout << "Please enter your username: ";
+        cin >> username;
+        cout << "Please enter your password: ";
+        cin >> password;
+        cout << "Welcome, " << username << "!" << endl;
+    }
+
+    // Function to display all available medicines
+    void displayMedicines() {
+        cout << "\nAvailable Medicines:" << endl;
+        cout << "======================" << endl;
+        for (const auto& med : medicines) {
+            cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: $" << med.price << endl;
+        }
+        cout << "======================" << endl;
+    }
+
+    // Function to search for a medicine by name and add it to cart
+    void addToCart(const string& med_name) {
+        bool found = false;
+        for (const auto& med : medicines) {
+            if (toLower(med.medicine_name) == toLower(med_name)) {
+                cart.push_back(med);
+                cout << "Added " << med.medicine_name << " to cart." << endl;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Medicine not found. Please enter a valid medicine name." << endl;
+        }
+    }
+
+    // Function to display the current cart
+    void displayCart() {
+        if (cart.empty()) {
+            cout << "Your cart is empty." << endl;
+        } else {
+            cout << "\nYour Cart:" << endl;
+            cout << "======================" << endl;
+            double total = 0.0;
+            for (const auto& med : cart) {
+                cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: $" << med.price << endl;
+                total += med.price;
+            }
+            cout << "======================" << endl;
+            cout << "Total: $" << fixed << setprecision(2) << total << endl;
+        }
+    }
+
+    // Function to clear the cart
+    void clearCart() {
+        cart.clear();
+        cout << "Cart cleared." << endl;
+    }
+};
+
+int main() {
+    Pharmacy pharmacy;
+
+    // Login page
+    pharmacy.login();
+
+    int choice;
+    string med_name;
+
+    do {
+        // Menu
+        cout << "\n===== Pharmacy Management Menu =====" << endl;
+        cout << "1. Display Available Medicines" << endl;
+        cout << "2. Search and Add Medicine to Cart" << endl;
+        cout << "3. View Cart" << endl;
+        cout << "4. Clear Cart" << endl;
+        cout << "5. Checkout and Exit" << endl;
+        cout << "Enter your choice (1-5): ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                pharmacy.displayMedicines();
+                break;
+            case 2:
+                cout << "Enter the name of the medicine to add to cart: ";
+                cin.ignore(); // ignore newline character from previous input
+                getline(cin, med_name);
+                pharmacy.addToCart(med_name);
+                break;
+            case 3:
+                pharmacy.displayCart();
+                break;
+            case 4:
+                pharmacy.clearCart();
+                break;
+            case 5:
+                cout << "\nThank you for using Pharmacy Management System. Have a nice day!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+        }
+    } while (choice != 5);
+
+    return 0;
+}
