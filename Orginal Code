@@ -86,7 +86,7 @@ public:
         cout << "\nAvailable Medicines:" << endl;
         cout << "======================" << endl;
         for (const auto& med : medicines) {
-            cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: $" << med.price << endl;
+            cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: Rs" << med.price << endl;
         }
         cout << "======================" << endl;
     }
@@ -116,11 +116,11 @@ public:
             cout << "======================" << endl;
             double total = 0.0;
             for (const auto& med : cart) {
-                cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: $" << med.price << endl;
+                cout << "Medicine Type: " << med.medicine_type << ", Name: " << med.medicine_name << ", Price: Rs" << med.price << endl;
                 total += med.price;
             }
             cout << "======================" << endl;
-            cout << "Total: $" << fixed << setprecision(2) << total << endl;
+            cout << "Total: Rs" << fixed << setprecision(2) << total << endl;
         }
     }
 
