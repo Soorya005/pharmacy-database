@@ -3,15 +3,15 @@
 
 using namespace std;
 
-// Define a class to represent medicine information
+// Defining cls  represent medicine info
 class Medicine {
 public:
     string medicine_type;
     string medicine_name;
     double price;
 
-    Medicine() {}
-    Medicine(string type, string name, double price) : medicine_type(type), medicine_name(name), price(price) {}
+    Medicine() {}   //defining default constructor  
+    Medicine(string type, string name, double price) : medicine_type(type), medicine_name(name), price(price) {} //parameterized cnsttor
 };
 
 class User {
@@ -19,7 +19,7 @@ protected:
     string username;
     string password;
 
-public:
+public:                      //fn for login
     void login() {
         cout << "===== Pharmacy Management System =====" << endl;
         cout << "Please enter your username: ";
@@ -29,15 +29,15 @@ public:
         cout << "Welcome, " << username << "!" << endl;
     }
 };
-
-class Pharmacy : public User {
-private:
-    Medicine medicines[37];  // Array to hold medicine data
-    Medicine cart[37];       // Array to hold medicines added to cart
+ 
+class Pharmacy : public User {            //inheritance from class user
+private: 
+    Medicine medicines[37];  // Array  medicine data
+    Medicine cart[37];       // Array for medicines added to cart
     int cart_size;           // Size of the cart array
 
 public:
-    Pharmacy() : cart_size(0) {
+    Pharmacy() : cart_size(0) {      //initialising cart to 0 
         // Initialize medicines array
         medicines[0] = Medicine("Drops", "Tobramycin eye drops", 130.0);
         medicines[1] = Medicine("Drops", "Milfox eye drops", 164.0);
@@ -78,7 +78,7 @@ public:
         medicines[36] = Medicine("Miscellaneous", "Armsling", 250.0);
     }
 
-    void displayMedicines() {
+    void displayMedicines() {      //fn to display meds
         cout << "\nAvailable Medicines:" << endl;
         cout << "======================" << endl;
         for (int i = 0; i < 37; i++) {
@@ -87,7 +87,7 @@ public:
         cout << "======================" << endl;
     }
 
-    void addToCart(const string& med_name) {
+    void addToCart(const string& med_name) {      //function can access the original string passed to it without making a copy, and it is guaranteed not to modify the string
         bool found = false;
         for (int i = 0; i < 37; i++) {
             if (caseInsensitiveCompare(medicines[i].medicine_name, med_name)) {
@@ -174,7 +174,7 @@ int main() {
                 break;
             case 2:
                 cout << "Enter the name of the medicine to add to cart: ";
-                cin.ignore(); // ignore newline character from previous input
+                cin.ignore();  
                 getline(cin, med_name);
                 pharmacy.addToCart(med_name);
                 break;
