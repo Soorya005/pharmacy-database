@@ -123,7 +123,7 @@ public:
         cout << "Cart cleared." << endl;
     }
 
-    // Declare friend function to access private members of Pharmacy
+    //   friend function  access private members of Pharmacy
     friend void displayTotalPrice(Pharmacy& pharmacy);
 
     // Utility function for case-insensitive string comparison
@@ -150,7 +150,7 @@ void displayTotalPrice(Pharmacy& pharmacy) {
 }
 
 int main() {
-    Pharmacy pharmacy;
+    Pharmacy pharmacy;  //created an object from pharmacy cls
 
     pharmacy.login();
 
@@ -174,8 +174,8 @@ int main() {
                 break;
             case 2:
                 cout << "Enter the name of the medicine to add to cart: ";
-                cin.ignore();  
-                getline(cin, med_name);
+                cin.ignore();  //cin.ignore ignores the white spaces between words
+                getline(cin, med_name);  //reads entire line of txt
                 pharmacy.addToCart(med_name);
                 break;
             case 3:
