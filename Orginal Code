@@ -3,41 +3,41 @@
 
 using namespace std;
 
-// Defining cls  represent medicine info
+// Defining cls to represent medicine info
 class Medicine {
 public:
     string medicine_type;
     string medicine_name;
     double price;
 
-    Medicine() {}   //defining default constructor  
-    Medicine(string type, string name, double price) : medicine_type(type), medicine_name(name), price(price) {} //parameterized cnsttor
+    Medicine() {}   // Defining default constructor  
+    Medicine(string type, string name, double price) : medicine_type(type), medicine_name(name), price(price) {} // Parameterized constructor
 };
 
 class User {
 protected:
     string username;
-    string password;
+    string phone_number;
 
-public:                      //fn for login
+public:                      // Function for login
     void login() {
         cout << "===== Pharmacy Management System =====" << endl;
         cout << "Please enter your username: ";
         cin >> username;
-        cout << "Please enter your password: ";
-        cin >> password;
+        cout << "Please enter your phone number: ";
+        cin >> phone_number;
         cout << "Welcome, " << username << "!" << endl;
     }
 };
  
-class Pharmacy : public User {            //inheritance from class user
+class Pharmacy : public User {            // Inheritance from class User
 private: 
-    Medicine medicines[37];  // Array  medicine data
+    Medicine medicines[37];  // Array for medicine data
     Medicine cart[37];       // Array for medicines added to cart
     int cart_size;           // Size of the cart array
 
 public:
-    Pharmacy() : cart_size(0) {      //initialising cart to 0 
+    Pharmacy() : cart_size(0) {      // Initializing cart size to 0 
         // Initialize medicines array
         medicines[0] = Medicine("Drops", "Tobramycin eye drops", 130.0);
         medicines[1] = Medicine("Drops", "Milfox eye drops", 164.0);
@@ -78,7 +78,7 @@ public:
         medicines[36] = Medicine("Miscellaneous", "Armsling", 250.0);
     }
 
-    void displayMedicines() {      //fn to display meds
+    void displayMedicines() {      // Function to display medicines
         cout << "\nAvailable Medicines:" << endl;
         cout << "======================" << endl;
         for (int i = 0; i < 37; i++) {
@@ -87,7 +87,7 @@ public:
         cout << "======================" << endl;
     }
 
-    void addToCart(const string& med_name) {      //function can access the original string passed to it without making a copy, and it is guaranteed not to modify the string
+    void addToCart(const string& med_name) {      // Function to add medicine to cart
         bool found = false;
         for (int i = 0; i < 37; i++) {
             if (caseInsensitiveCompare(medicines[i].medicine_name, med_name)) {
@@ -123,7 +123,7 @@ public:
         cout << "Cart cleared." << endl;
     }
 
-    //   friend function  access private members of Pharmacy
+    //   friend function to access private members of Pharmacy
     friend void displayTotalPrice(Pharmacy& pharmacy);
 
     // Utility function for case-insensitive string comparison
@@ -150,7 +150,7 @@ void displayTotalPrice(Pharmacy& pharmacy) {
 }
 
 int main() {
-    Pharmacy pharmacy;  //created an object from pharmacy cls
+    Pharmacy pharmacy;  // Created an object from Pharmacy class
 
     pharmacy.login();
 
@@ -174,8 +174,8 @@ int main() {
                 break;
             case 2:
                 cout << "Enter the name of the medicine to add to cart: ";
-                cin.ignore();  //cin.ignore ignores the white spaces between words
-                getline(cin, med_name);  //reads entire line of txt
+                cin.ignore();  // cin.ignore ignores the white spaces between words
+                getline(cin, med_name);  // Reads entire line of text
                 pharmacy.addToCart(med_name);
                 break;
             case 3:
