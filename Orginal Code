@@ -9,9 +9,11 @@ public:
     string medicine_type;
     string medicine_name;
     double price;
+    int stock;
 
     Medicine() {}   // Defining default constructor  
-    Medicine(string type, string name, double price) : medicine_type(type), medicine_name(name), price(price) {} // Parameterized constructor
+    Medicine(string type, string name, double price, int stock) 
+        : medicine_type(type), medicine_name(name), price(price), stock(stock) {} // Parameterized constructor
 };
 
 class User {
@@ -39,50 +41,50 @@ private:
 public:
     Pharmacy() : cart_size(0) {      // Initializing cart size to 0 
         // Initialize medicines array
-        medicines[0] = Medicine("Drops", "Tobramycin eye drops", 130.0);
-        medicines[1] = Medicine("Drops", "Milfox eye drops", 164.0);
-        medicines[2] = Medicine("Drops", "Milfodex eye drops", 162.0);
-        medicines[3] = Medicine("Tablet", "Montelukast tablet", 107.0);
-        medicines[4] = Medicine("Tablet", "Palip XR", 132.0);
-        medicines[5] = Medicine("Tablet", "Thyronorm", 157.0);
-        medicines[6] = Medicine("Suppositories", "FENSUPP suppositories", 116.0);
-        medicines[7] = Medicine("Suppositories", "NEOMOL anal suppositories", 40.0);
-        medicines[8] = Medicine("Suppositories", "Zyrotram suppository", 36.0);
-        medicines[9] = Medicine("Capsules", "Vitamin E capsule", 33.0);
-        medicines[10] = Medicine("Capsules", "Becosules capsule", 51.0);
-        medicines[11] = Medicine("Capsules", "Gemcal capsule", 339.0);
-        medicines[12] = Medicine("Syrups", "Asthalin", 152.0);
-        medicines[13] = Medicine("Syrups", "Salbutamol sulphate syrup", 83.0);
-        medicines[14] = Medicine("Syrups", "Protussa cough syrup", 85.0);
-        medicines[15] = Medicine("Injections", "Mervup injection", 108.0);
-        medicines[16] = Medicine("Injections", "Rejunex injection", 47.0);
-        medicines[17] = Medicine("Injections", "Deriphilin injection", 87.0);
-        medicines[18] = Medicine("Inhalers", "asthalin inhalers", 147.0);
-        medicines[19] = Medicine("Inhalers", "aerocart inhalers", 249.0);
-        medicines[20] = Medicine("Inhalers", "Levolin inhalers", 214.0);
-        medicines[21] = Medicine("Patches", "Mupatch", 141.0);
-        medicines[22] = Medicine("Patches", "Dicloplast", 182.0);
-        medicines[23] = Medicine("Patches", "2 baconil TTS20", 737.0);
-        medicines[24] = Medicine("Buccal tablets", "Corlan", 272.0);
-        medicines[25] = Medicine("Buccal tablets", "Fentosa", 138.0);
-        medicines[26] = Medicine("Buccal tablets", "Buccastem", 400.0);
-        medicines[27] = Medicine("Miscellaneous", "Medicated gloves", 55.0);
-        medicines[28] = Medicine("Miscellaneous", "Sanitizers", 15.0);
-        medicines[29] = Medicine("Miscellaneous", "Sanitary pads", 40.0);
-        medicines[30] = Medicine("Miscellaneous", "Face Masks", 5.0);
-        medicines[31] = Medicine("Miscellaneous", "Ankle brace", 2000.0);
-        medicines[32] = Medicine("Miscellaneous", "Pulse oximeters", 400.0);
-        medicines[33] = Medicine("Miscellaneous", "Digital Thermometer", 300.0);
-        medicines[34] = Medicine("Miscellaneous", "Blood pressure monitor", 800.0);
-        medicines[35] = Medicine("Miscellaneous", "Glucometer", 800.0);
-        medicines[36] = Medicine("Miscellaneous", "Armsling", 250.0);
+        medicines[0] = Medicine("Drops", "Tobramycin eye drops", 130.0, 10);
+        medicines[1] = Medicine("Drops", "Milfox eye drops", 164.0, 15);
+        medicines[2] = Medicine("Drops", "Milfodex eye drops", 162.0, 20);
+        medicines[3] = Medicine("Tablet", "Montelukast tablet", 107.0, 25);
+        medicines[4] = Medicine("Tablet", "Palip XR", 132.0, 30);
+        medicines[5] = Medicine("Tablet", "Thyronorm", 157.0, 35);
+        medicines[6] = Medicine("Suppositories", "FENSUPP suppositories", 116.0, 40);
+        medicines[7] = Medicine("Suppositories", "NEOMOL anal suppositories", 40.0, 45);
+        medicines[8] = Medicine("Suppositories", "Zyrotram suppository", 36.0, 50);
+        medicines[9] = Medicine("Capsules", "Vitamin E capsule", 33.0, 55);
+        medicines[10] = Medicine("Capsules", "Becosules capsule", 51.0, 60);
+        medicines[11] = Medicine("Capsules", "Gemcal capsule", 339.0, 65);
+        medicines[12] = Medicine("Syrups", "Asthalin", 152.0, 70);
+        medicines[13] = Medicine("Syrups", "Salbutamol sulphate syrup", 83.0, 75);
+        medicines[14] = Medicine("Syrups", "Protussa cough syrup", 85.0, 80);
+        medicines[15] = Medicine("Injections", "Mervup injection", 108.0, 85);
+        medicines[16] = Medicine("Injections", "Rejunex injection", 47.0, 90);
+        medicines[17] = Medicine("Injections", "Deriphilin injection", 87.0, 95);
+        medicines[18] = Medicine("Inhalers", "asthalin inhalers", 147.0, 100);
+        medicines[19] = Medicine("Inhalers", "aerocart inhalers", 249.0, 105);
+        medicines[20] = Medicine("Inhalers", "Levolin inhalers", 214.0, 110);
+        medicines[21] = Medicine("Patches", "Mupatch", 141.0, 115);
+        medicines[22] = Medicine("Patches", "Dicloplast", 182.0, 120);
+        medicines[23] = Medicine("Patches", "2 baconil TTS20", 737.0, 125);
+        medicines[24] = Medicine("Buccal tablets", "Corlan", 272.0, 130);
+        medicines[25] = Medicine("Buccal tablets", "Fentosa", 138.0, 135);
+        medicines[26] = Medicine("Buccal tablets", "Buccastem", 400.0, 140);
+        medicines[27] = Medicine("Miscellaneous", "Medicated gloves", 55.0, 145);
+        medicines[28] = Medicine("Miscellaneous", "Sanitizers", 15.0, 150);
+        medicines[29] = Medicine("Miscellaneous", "Sanitary pads", 40.0, 155);
+        medicines[30] = Medicine("Miscellaneous", "Face Masks", 5.0, 160);
+        medicines[31] = Medicine("Miscellaneous", "Ankle brace", 2000.0, 165);
+        medicines[32] = Medicine("Miscellaneous", "Pulse oximeters", 400.0, 170);
+        medicines[33] = Medicine("Miscellaneous", "Digital Thermometer", 300.0, 175);
+        medicines[34] = Medicine("Miscellaneous", "Blood pressure monitor", 800.0, 180);
+        medicines[35] = Medicine("Miscellaneous", "Glucometer", 800.0, 185);
+        medicines[36] = Medicine("Miscellaneous", "Armsling", 250.0, 190);
     }
 
     void displayMedicines() {      // Function to display medicines
         cout << "\nAvailable Medicines:" << endl;
         cout << "======================" << endl;
         for (int i = 0; i < 37; i++) {
-            cout << medicines[i].medicine_type << ", Name: " << medicines[i].medicine_name << ", Price: Rs" << medicines[i].price << endl;
+            cout << medicines[i].medicine_type << ", Name: " << medicines[i].medicine_name << ", Price: Rs" << medicines[i].price << ", Stock: " << medicines[i].stock << endl;
         }
         cout << "======================" << endl;
     }
@@ -91,9 +93,13 @@ public:
         bool found = false;
         for (int i = 0; i < 37; i++) {
             if (caseInsensitiveCompare(medicines[i].medicine_name, med_name)) {
-                cart[cart_size++] = medicines[i];
-                cout << "Added " << medicines[i].medicine_name << " to cart." << endl;
-                found = true;
+                if (medicines[i].stock > 0) {
+                    cart[cart_size++] = medicines[i];
+                    cout << "Added " << medicines[i].medicine_name << " to cart." << endl;
+                    found = true;
+                } else {
+                    cout << "Sorry, " << medicines[i].medicine_name << " is out of stock." << endl;
+                }
                 break;
             }
         }
@@ -110,12 +116,42 @@ public:
             cout << "======================" << endl;
             double total = 0.0;
             for (int i = 0; i < cart_size; i++) {
-                cout << cart[i].medicine_type << ", Name: " << cart[i].medicine_name << ", Price: Rs" << cart[i].price << endl;
+                cout << i + 1 << ". " << cart[i].medicine_type << ", Name: " << cart[i].medicine_name << ", Price: Rs" << cart[i].price << endl;
                 total += cart[i].price;
             }
             cout << "======================" << endl;
             cout << "Total: Rs" << total << endl;
+            cout << "======================" << endl;
+            cout << "Enter the number of the medicine to remove it from the cart or 0 to return to the menu: ";
+            int choice;
+            cin >> choice;
+            if (choice > 0 && choice <= cart_size) {
+                removeFromCart(choice - 1);
+            }
         }
+    }
+
+    void removeFromCart(int index) {
+        for (int i = index; i < cart_size - 1; i++) {
+            cart[i] = cart[i + 1];
+        }
+        cart_size--;
+        cout << "Medicine removed from cart." << endl;
+    }
+
+    void checkout() {
+        for (int i = 0; i < cart_size; i++) {
+            for (int j = 0; j < 37; j++) {
+                if (cart[i].medicine_name == medicines[j].medicine_name) {
+                    medicines[j].stock--;  // Decrement stock after checkout
+                    break;
+                }
+            }
+        }
+        displayTotalPrice(*this);
+        displayCart();
+        cart_size = 0;  // Clear the cart after checkout
+        cout << "\nCheckout complete. Thank you for using Pharmacy Management System. Have a nice day!" << endl;
     }
 
     void clearCart() {
@@ -164,8 +200,9 @@ int main() {
         cout << "2. Search and Add Medicine to Cart" << endl;
         cout << "3. View Cart" << endl;
         cout << "4. Clear Cart" << endl;
-        cout << "5. Checkout and Exit" << endl;
-        cout << "Enter your choice (1-5): ";
+        cout << "5. Checkout" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice (1-6): ";
         cin >> choice;
 
         switch (choice) {
@@ -185,14 +222,15 @@ int main() {
                 pharmacy.clearCart();
                 break;
             case 5:
-                displayTotalPrice(pharmacy);
-                pharmacy.displayCart();
+                pharmacy.checkout();
+                break;
+            case 6:
                 cout << "\nThank you for using Pharmacy Management System. Have a nice day!" << endl;
                 break;
             default:
-                cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+                cout << "Invalid choice. Please enter a number between 1 and 6." << endl;
         }
-    } while (choice != 5);
+    } while (choice != 6);
 
     return 0;
 }
